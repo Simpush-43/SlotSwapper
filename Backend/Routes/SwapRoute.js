@@ -44,12 +44,6 @@ router.post('/swap-request', auth, async (req, res) => {
 
     const populated = await SwapRequest.findById(swap._id)
       .populate('mySlot theirSlot requester responder');
-const io = req.app.get("io");
- const onlineUsers = req.app.get("onlineUsers");
- const responderSocket = onlineUsers[theirSlot.owner.toString()];
- if (responderSocket) {
-   io.to(responderSocket).emit("swap_request_received", populated);
-}
     res.json(populated);
   } catch (err) {
     console.error(err);
