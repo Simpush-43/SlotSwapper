@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { apiFetch } from "../api/fetcher";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
-
+import { toast } from "sonner";
 export default function CreateSlotModal({ onClose, refresh }) {
   const { state } = useContext(AuthContext);
   const [title, setTitle] = useState("");
@@ -19,6 +19,7 @@ export default function CreateSlotModal({ onClose, refresh }) {
     });
     refresh();
     onClose();
+    toast.success("Slot created 🗓️");
   };
 
   return (
