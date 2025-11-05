@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { apiFetch } from "../api/fetcher";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { toast } from "sonner";
 export default function Login() {
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -18,9 +18,10 @@ export default function Login() {
         body: { email, password },
       });
       dispatch({ type: "LOGIN", token: data.token, user: data.user });
+      toast.success("Logged in successfully! 🎉");
       navigate("/");
     } catch (err) {
-      alert(err.error || "Login failed");
+      toast.error("Invalid credentials ❌"||err.error);
     }
   };
 

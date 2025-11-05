@@ -3,7 +3,7 @@ import { AuthContext } from  "../context/AuthContext";
 import { apiFetch } from "../api/fetcher";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { toast } from "sonner";
 export default function Signup() {
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,8 +21,9 @@ export default function Signup() {
       });
       dispatch({ type: "LOGIN", token: data.token, user: data.user });
       navigate("/");
+      toast.success("Account created ✅");
     } catch (err) {
-      alert(err.error || "Signup failed");
+      toast.error(err.error || "Could not register ❌");
     }
   };
 

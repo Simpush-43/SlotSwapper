@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { AuthContext } from "../context/AuthContext";
 import { apiFetch } from "../api/fetcher";
-
+import { toast } from "sonner";
 export default function SwapModal({ slot, onClose }) {
   const { state } = useContext(AuthContext);
   const [mySlots, setMySlots] = useState([]);
@@ -15,13 +15,17 @@ export default function SwapModal({ slot, onClose }) {
   }, []);
 
   const handleSwap = async (mySlotId) => {
-    await apiFetch("/api/swap-request", {
-      method: "POST",
-      token: state.token,
-      body: { mySlotId, theirSlotId: slot._id },
-    });
-    alert("Swap request sent!");
-    onClose();
+    try {
+      await apiFetch("/api/swap-request", {
+        method: "POST",
+        token: state.token,
+        body: { mySlotId, theirSlotId: slot._id },
+      });
+      toast.success("Swap request sent! 🔁");
+      onClose();
+    } catch (error) {
+      toast.error(error.error || "Swap request failed ❌");
+    }
   };
 
   return (

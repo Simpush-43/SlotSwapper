@@ -8,12 +8,14 @@ import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/MarketPlace";
 import Requests from "./pages/Request";
 import ProtectedRoute from "./componets/ProtectedRoute";
+import {Toaster} from "sonner"
 import './App.css'
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Navbar />
+        <Toaster richColors closeButton position="top-right" duration={1800} />
         <div className="p-6">
 
           <Routes>
