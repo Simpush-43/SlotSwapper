@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { apiFetch } from "../api/fetcher";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Repeat } from "lucide-react";
-import CreateSlotModal from "../componets/createSlotModal";
+import CreateSlotModal from "../componets/CreateSlotModal";
 import SlotCard from "../componets/SlotCard";
 export default function Dashboard() {
   const { state } = useContext(AuthContext);
