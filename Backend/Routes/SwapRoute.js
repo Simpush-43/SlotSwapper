@@ -91,12 +91,6 @@ router.post('/swap-response/:requestId', auth, async (req, res) => {
       await theirSlot.save();
 
       swapReq.status = 'ACCEPTED';
-       const io = req.app.get("io");
- const onlineUsers = req.app.get("onlineUsers");
- const requesterSocket = onlineUsers[swapReq.requester.toString()];
- if (requesterSocket) {
-   io.to(requesterSocket).emit("swap_request_accepted", populated);
-}
       await swapReq.save();
     } else {
       mySlot.status = 'SWAPPABLE';
