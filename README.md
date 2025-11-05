@@ -36,7 +36,7 @@ npm run dev
 backend/.env
 
 PORT=4000
-MONGO_URI=<your Mongo Atlas connection string with DB name>
+MONGO_URI=mongodb+srv://Pushkar11111:Pushkar0011@cluster0.ae4bpzf.mongodb.net/?appName=Cluster0
 JWT_SECRET=<any-strong-secret>
 
 
@@ -51,8 +51,8 @@ npm run dev
 
 frontend/.env
 
-VITE_API_BASE=http://localhost:4000
-
+VITE_API_BASE=(https://slotswapper-1-sjrw.onrender.com)
+FRONT END URL:https://slotswapper-m3sk.onrender.com
 
 Open the Vite dev URL (usually http://localhost:5173
 ).
